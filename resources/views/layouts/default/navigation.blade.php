@@ -47,18 +47,18 @@
              
             <li class="dropdown"> 
                 <a href="#" title="Solutions" class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions</a> 
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 250px;">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 300px;">
                     <ul class="nav">
-						@foreach(DB::table('dit_services')->where('status',1)->where('parrent','Yes')->get() as $row)
-							<li class="expend-dropdown" id="{{$row->id}}">
-								<a class="dropdown-item text-uppercase"  href="{{ route('company.services.single', $row->id )}}">{{ $row->service_name }}</a>
-								<ul class="nav d-none dropdown-2 ex{{$row->id}}" id="{{$row->id}}">
-									@foreach(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->get() as $row2)
-										<li><a class="dropdown-item text-uppercase" href="{{ route('company.services.single', $row2->id )}}">{{ $row2->service_name }}</a></li>
-									@endforeach
-								</ul>
-							</li>
-						@endforeach
+          						@foreach(DB::table('dit_services')->where('status',1)->where('parrent','Yes')->get() as $row)
+          							<li class="expend-dropdown" id="{{$row->id}}">
+          								<a class="dropdown-item text-uppercase"  href="{{ route('company.services.single', $row->id )}}">{{ $row->service_name }} @if(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->count() > 0) <i class="nav-arr-icn fa fa-arrow-right"></i> @endif</a>
+          								<ul class="nav d-none dropdown-2 ex{{$row->id}}" id="{{$row->id}}">
+          									@foreach(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->get() as $row2)
+          										<li><a class="dropdown-item text-uppercase" href="{{ route('company.services.single', $row2->id )}}">{{ $row2->service_name }}</a></li>
+          									@endforeach
+          								</ul>
+          							</li>
+          						@endforeach
                     </ul>
                 </div>
             </li>
@@ -69,7 +69,11 @@
                     <ul class="nav">
 						
 						<li class="expend-dropdown" id="service">
-							<a class="dropdown-item text-uppercase"  href="{{ route('products') }}">Service</a>
+							<a class="dropdown-item text-uppercase"  href="{{ route('products') }}">Service 
+                @if(DB::table('products_solution')->where('status',1)->where('type', 'service')->count() > 0) 
+                  <i class="nav-arr-icn fa fa-arrow-right"></i> 
+                @endif
+              </a>
 							<ul class="nav d-none dropdown-2 exservice" id="">
 								@foreach(DB::table('products_solution')->where('status',1)->where('type', 'service')->get() as $row3)
 									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
@@ -78,7 +82,11 @@
 						</li>
 						
 						<li class="expend-dropdown" id="consultancy">
-							<a class="dropdown-item text-uppercase"  href="{{ route('consultancy') }}">Consultancy</a>
+							<a class="dropdown-item text-uppercase"  href="{{ route('consultancy') }}">Consultancy
+                @if(DB::table('products_solution')->where('status',1)->where('type', 'consultancy')->count() > 0)
+                  <i class="nav-arr-icn fa fa-arrow-right"></i> 
+                @endif
+              </a>
 							<ul class="nav d-none dropdown-2 exconsultancy" id="consultancy">
 								@foreach(DB::table('products_solution')->where('status',1)->where('type', 'consultancy')->get() as $row3)
 									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
@@ -87,7 +95,11 @@
 						</li>
 						
 						<li class="expend-dropdown" id="training">
-							<a class="dropdown-item text-uppercase"  href="{{ route('training') }}">Training</a>
+							<a class="dropdown-item text-uppercase"  href="{{ route('training') }}">Training
+                @if(DB::table('products_solution')->where('status',1)->where('type', 'training')->count() > 0)
+                  <i class="nav-arr-icn fa fa-arrow-right"></i> 
+                @endif
+              </a>
 							<ul class="nav d-none dropdown-2 extraining" id="training">
 								@foreach(DB::table('products_solution')->where('status',1)->where('type', 'training')->get() as $row3)
 									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>

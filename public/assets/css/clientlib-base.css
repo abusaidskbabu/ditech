@@ -11734,3 +11734,12 @@ Down
 .d-block {
   display: block !important;
 }
+
+
+/*custom */
+.nav-arr-icn{
+  position: absolute;
+  left: 92%;
+  top: 37%;
+  font-size: 10px;
+}
