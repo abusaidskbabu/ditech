@@ -72,6 +72,16 @@
 										 <div class="col-md-2">
 										 	
 										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
+										<label for="Serial No" class=" control-label col-md-4 text-left"> Serial No </label>
+										<div class="col-md-6">
+										  <input  type='text' name='created_at' id='created_at' value='{{ $row['created_at'] }}' 
+						     class='form-control form-control-sm ' /> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
 									  </div> </fieldset></div>
 
 			<div style="clear:both"></div>	

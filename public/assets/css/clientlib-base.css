@@ -2925,6 +2925,7 @@ ul.navs > li > .menu-title {
 /*--------------------------------  Breadcrumb css start------------------------------ */
 .show-strip {
     background-color: #ffffff;
+    border-bottom: 1px solid gray;
 }        
 .breadcrumb.aem-GridColumn{
 	margin: 0;
@@ -8126,14 +8127,14 @@ margin-bottom: 50px;
 }    
 
 .panel-title a {
-    font-family: myriad-pro, myriad-pro-condensed;
+    font-family: 'Montserrat' !important;
     font-size: 20px;
     font-weight: 400;
     line-height: 26px;
 }   
 
 .panel-body {
-    font-family: myriad-pro, myriad-pro-semi-condensed;
+    font-family: 'Montserrat' !important;
     font-size: 18px;
     font-weight: 400;
     line-height: 26px;
@@ -9152,10 +9153,10 @@ ul.social-share-pr > li.slideout:nth-child(4) {
 
 
 footer {
-	background: #F8F8F8;
+	background: #1d1e1c;
 	color: #333;
 	/*padding: 50px 0;*/
-	border-top: 5px solid #d8d8d8;
+	border-top: 5px solid #1d1e1c;
 }
 ul.footer-txt > li:first-child {
 	margin-top: 20px;
@@ -9164,11 +9165,11 @@ ul.footer-txt > li {
 	margin-bottom: 10px;
 }
 ul.footer-txt > li > a {
-	color: #3F3F3F;
+	color: #ffffff;
 	font-size: 16px;
 }
 .ftr-head {
-	color: #000000;
+	color: #ffffff;
 	font-size: 22px;
 	font-weight: 900;
 }

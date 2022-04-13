@@ -50,9 +50,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 300px;">
                     <ul class="nav">
           						@foreach(DB::table('dit_services')->where('status',1)->where('parrent','Yes')->get() as $row)
-          							<li class="expend-dropdown" id="{{$row->id}}">
+          							<li class="expend-dropdown dropdown-1" id="{{$row->id}}">
           								<a class="dropdown-item text-uppercase"  href="{{ route('company.services.single', $row->id )}}">{{ $row->service_name }} @if(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->count() > 0) <i class="nav-arr-icn fa fa-arrow-right"></i> @endif</a>
-          								<ul class="nav d-none dropdown-2 ex{{$row->id}}" id="{{$row->id}}">
+          								<ul class="nav d-none dropdown-2 ex{{$row->id}}" >
           									@foreach(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->get() as $row2)
           										<li><a class="dropdown-item text-uppercase" href="{{ route('company.services.single', $row2->id )}}">{{ $row2->service_name }}</a></li>
           									@endforeach
@@ -190,7 +190,14 @@
     
     
 
-    
+    <style type="text/css">
+      .cros_for_mobile{
+        position: absolute;
+        left: 93%;
+        right: 0;
+        top: 0%;
+      }
+    </style>
 
 
 
@@ -305,7 +312,7 @@
         
         <!-- Services Menu -->
         <div class="services-menu wow fadeInLeftBig" data-wow-duration="0.3s">
-          <div class="cross visible1024-cross"> <a title="close" href="javascript:void(0);" alt="Cross" aria-label="Close menu" aria-haspopup="false" aria-expanded="false"> 
+          <div class="cross visible1024-cross cros_for_mobile"> <a title="close" href="javascript:void(0);" alt="Cross" aria-label="Close menu" aria-haspopup="false" aria-expanded="false"> 
             <i class="fas fa-times"></i>
             </a> 
           </div>
@@ -319,12 +326,17 @@
                   $services = DB::table('dit_services')->where('status',1)->where('parrent', 'Yes')->get();
                 @endphp
                 @foreach($services as $row)
-                <div class="col-md-3 col-sm-3 col-xs-12"> 
-                  <a href="{{ route('company.services.single', $row->id )}}" class="black-color">
-                  {!! $row->service_icone !!}
-                  <h3 class="hear-txt-sub">{{$row->service_name}}</h3>
-                </a>
-                </div>
+                  <div class="col-md-3 col-sm-3 col-xs-12"> 
+                    <a href="{{ route('company.services.single', $row->id )}}" class="black-color">
+                    {{-- {!! $row->service_icone !!} --}}
+                      <h3 class="hear-txt-sub">{{$row->service_name}}</h3>
+                    </a>
+                    <ul class="">
+                      @foreach(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->get() as $row2)
+                        <li><a class="dropdown-item" href="{{ route('company.services.single', $row2->id )}}">{{ $row2->service_name }}</a></li>
+                      @endforeach
+                    </ul>
+                  </div>
                 @endforeach
               </div>
             </div>
@@ -334,7 +346,7 @@
 		
 		<!-- Platform Menu -->
         <div class="platforms-menu wow fadeInLeftBig" data-wow-duration="0.3s">
-          <div class="cross visible1024-cross"> <a title="close" href="javascript:void(0);" alt="Cross" aria-label="Close menu" aria-haspopup="false" aria-expanded="false"> <img
+          <div class="cross visible1024-cross cros_for_mobile"> <a title="close" href="javascript:void(0);" alt="Cross" aria-label="Close menu" aria-haspopup="false" aria-expanded="false"> <img
                 src="content/dam/infosys-web/burger-menu/en/images/multiply.svg" alt="Cross"> </a> </div>
           <div class="submenu-portion">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -342,14 +354,29 @@
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 align-list">
 				<div class="row">
-					<div class="col-md-3 col-sm-3 col-xs-12"> 
+					<div class="col-md-4 col-sm-3 col-xs-12"> 
 						<a href="{{ route('products')}}" class="black-color"><h3 class="hear-txt-sub">Service</h3></a>
+            <ul>
+              @foreach(DB::table('products_solution')->where('status',1)->where('type', 'service')->get() as $row3)
+                <li><a class="dropdown-item" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
+              @endforeach
+            </ul>
 					</div>
-					<div class="col-md-3 col-sm-3 col-xs-12"> 
+					<div class="col-md-4 col-sm-3 col-xs-12"> 
 						<a href="{{ route('consultancy')}}" class="black-color"><h3 class="hear-txt-sub">Consultancy</h3></a>
+            <ul>
+              @foreach(DB::table('products_solution')->where('status',1)->where('type', 'consultancy')->get() as $row3)
+                <li><a class="dropdown-item" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
+              @endforeach
+            </ul>
 					</div>
-					<div class="col-md-3 col-sm-3 col-xs-12"> 
+					<div class="col-md-4 col-sm-3 col-xs-12"> 
 						<a href="{{ route('training')}}" class="black-color"><h3 class="hear-txt-sub">Training</h3></a>
+            <ul>
+                @foreach(DB::table('products_solution')->where('status',1)->where('type', 'training')->get() as $row3)
+                  <li><a class="dropdown-item" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
+                @endforeach
+            </ul>
 					</div>
 				</div>
             </div>
@@ -359,25 +386,37 @@
         
         <!-- About Us -->
         <div class="aboutus-menu wow fadeInLeftBig" data-wow-duration="0.3s">
-          <div class="cross visible1024-cross"> <a title="close" href="javascript:void(0);" alt="Cross" aria-label="Close menu" aria-haspopup="false" aria-expanded="false"> <i class="fas fa-times"></i> </a> </div>
+          <div class="cross visible1024-cross cros_for_mobile"> <a title="close" href="javascript:void(0);" alt="Cross" aria-label="Close menu" aria-haspopup="false" aria-expanded="false"> <i class="fas fa-times"></i> </a> </div>
           <div class="submenu-portion">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <h2 class="h2-heading mb10">Company</h2>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-12 align-list">
+            <div class="col-md-3 col-sm-3 col-xs-12 align-list">
               <ul class="list-unstyled li-separator">
                 <li><a class="dropdown-item text-uppercase" href="{{ route('about') }}">Overview</a></li>
                     <li><a class="dropdown-item text-uppercase" href="{{ route('management.profile') }}">Management Profile</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 align-list">
+              <ul class="list-unstyled li-separator">
                     <li><a class="dropdown-item text-uppercase" href="{{ route('portfolio') }}">Portfolio</a></li>
                     <li><a class="dropdown-item text-uppercase" href="{{ route('career')}}">Careers</a></li>
+                    
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 align-list">
+              <ul class="list-unstyled li-separator">
                     <li><a class="dropdown-item text-uppercase" href="{{ route('newsroom')}}">Newsroom</a></li>
                     <li><a class="dropdown-item text-uppercase" href="{{ route('blogs')}}">Blogs</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 align-list">
+              <ul class="list-unstyled li-separator">
                     <li><a class="dropdown-item text-uppercase" href="{{ route('whyUs') }}">Why Choose Us</a></li>
                     <li><a class="dropdown-item text-uppercase" href="{{ route('faqs')}}">FAQs</a></li>
               </ul>
-              </ul>
             </div>
-            
+
           </div>
         </div>
       </div>

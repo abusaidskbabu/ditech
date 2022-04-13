@@ -48,25 +48,32 @@
 
 
 <div class="freeflowhtml aem-GridColumn aem-GridColumn--default--12">
-     <section id="do_more" class="scroll-section pt75">
-		  <article class="container relative">
+    <section id="do_more" class="scroll-section pt75">
+		<article class="container relative">
 		    <div class="row">
-		      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center wow fadeInUp" data-wow-delay="0.3s"> 
-
-		        
-		      </div>
+		        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center wow fadeInUp" data-wow-delay="0.3s"> 
+                    <div class="panel-group" id="accordion">
+                        @foreach(DB::table('faqs')->where('status', 1)->get() as $row)
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title text-left">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$row->id}}">
+                                        {{$row->question}}</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse{{$row->id}}" class="panel-collapse collapse @if($loop->iteration == 1) in @endif">
+                                    <div class="panel-body text-left" style="background-color: white;">
+                                        {{$row->ans}}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+		        </div>
 		    </div>
 		    <div class="closeWrpr hidden-xs"></div>
-		    
-		   
-		  </article>
-</section>
-
-
-    
-
-
-
+	    </article>
+    </section>
 </div>
 
 @include('layouts.default.coll-us')

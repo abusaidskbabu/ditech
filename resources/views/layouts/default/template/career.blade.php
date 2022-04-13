@@ -88,12 +88,10 @@
                             <nav aria-label="Breadcrumb">
 
                                 <ol class="breadcrumb rmv-breadcrum navbar-left hidden-tab">
+                                   
                                     <li class="dropdown mega-dropdown">
-                              
-                                        <a href="about.html" class="dropdown-toggle disabled" data-toggle="dropdown">
-                                        {{ $title }}
-                                        <i class="fa fa-chevron-circle-down reverseArrow" aria-hidden="true"></i>
-                                    
+                                        <a href="#" class="dropdown-toggle disabled" data-toggle="dropdown">
+                                            {{ $title }}
                                         </a>
                                     </li>
                            
@@ -106,6 +104,7 @@
         </article>
     </section>
 </div>
+
 
 <div class="banner parbase @if(empty($breadcum->image)) l3-gradient aem-GridColumn @endif aem-GridColumn--default--12" @if(!empty($breadcum->image)) style="background-image: url('{{url('/')}}/uploads/images/banner/{{$breadcum->image}}'); background-repeat: no-repeat;background-position: center;" @endif>
     <section id="sml_ht_home_banner">

@@ -7,11 +7,11 @@
           <ul class="list-unstyled footer-txt">
             <li class="m-t-0">
               <a class="" href="{{ url('/') }}" title="Go to Infosys Home" aria-label="Go to Infosys Home">
-                <img id="logo" src="{{ asset('uploads/images/'.$setting->logo)}}">
+                <img id="logo" src="{{ asset('uploads/images/'.config('sximo')['cnf_logo'])}}">
               </a>
             </li>
             <li>
-              <p class=""><i class="fas fa-map-marker-alt"></i> 
+              <p class="text-white"><i class="fas fa-map-marker-alt"></i> 
                 {{ $setting->address }}
               </p>
             </li>
@@ -81,11 +81,11 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid ptb15 bg-white">
+    <div class="container-fluid ptb15 bg-dark">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7 col-md-6 col-12 col-xs-12">
-            <p class="mb0" style="font-size: 12px;">{{ $setting->copyright_text }}</p>
+          <div class="col-lg-12 col-md-12 col-12 col-xs-12 text-center">
+            <p class="mb0 text-white" style="font-size: 12px;">{{ $setting->copyright_text }}</p>
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@
 			$(".dropdown-2").addClass('d-none');
 		});
 		
-		$(".expend-dropdown").hover(function(){
+		$(".dropdown-1").hover(function(){
 			
 			var dropdownMenu = $(this).attr('id');
 			

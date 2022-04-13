@@ -299,16 +299,16 @@
                 <div class="tab-content" id="">
                     <div class="tab-pane" id="ex1-tabs-1" role="tabpanel">
                       <div class="row mt10">
-                        @foreach(DB::table('our_protfolios')->where('status',1)->get() as $row)
+                        @foreach(DB::table('our_protfolios')->where('status',1)->orderBy('created_at', 'asc')->get() as $row)
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb10 pitem pitem{{ $row->category_id}}" id="{{ $row->category_id}}">
                           <div class="hovereffect" style="">
-								<img class="img-responsive" src="{{url('/')}}/uploads/images/portfolio/{{ $row->image }}" alt="" style="height: 190px; padding: 20%;object-fit: contain;width:100%;">
-								<div class="overlay">
+								            <img class="img-responsive" src="{{url('/')}}/uploads/images/portfolio/{{ $row->image }}" alt="" style="height: 190px; padding: 20%;object-fit: contain;width:100%;">
+								              <div class="overlay">
                                   <h2>{{$row->title}}</h2>
                                   <p>
                                     <a href="{{ route('portfolio.details', $row->id)}}">VIEW MORE</a>
                                   </p>
-								</div>
+								              </div>
                           </div>
                         </div>
                         @endforeach

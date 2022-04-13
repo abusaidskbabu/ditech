@@ -63,7 +63,7 @@
 					</tr>
 				
 					<tr>
-						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Created At', (isset($fields['created_at']['language'])? $fields['created_at']['language'] : array())) }}</td>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Serial No', (isset($fields['created_at']['language'])? $fields['created_at']['language'] : array())) }}</td>
 						<td>{{ $row->created_at}} </td>
 						
 					</tr>

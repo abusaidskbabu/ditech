@@ -234,4 +234,9 @@ Route::resource('services/underattackrequest','Services\UnderattackrequestContro
 Route::resource('services/contactrequest','Services\ContactrequestController');
 // End Routes for contactrequest 
 
+                    
+// Start Routes for faq 
+Route::resource('services/faq','Services\FaqController');
+// End Routes for faq 
+
                     ?>

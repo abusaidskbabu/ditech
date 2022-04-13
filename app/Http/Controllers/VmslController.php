@@ -398,7 +398,7 @@ class VmslController extends Controller{
         $data['title'] = 'Portfolio';
         $data['breadcum'] = DB::table('con_banner_slider')->where('type', 'portfolio')->where('status', 1)->first();
         $data['category'] = DB::table('portfolio_category')->where('status', 1)->get();
-        $data['portfolio'] = DB::table('our_protfolios')->where('status', 1)->get();
+        $data['portfolio'] = DB::table('our_protfolios')->where('status', 1)->orderBy('created_at', 'ASC')->get();
         $data['setting'] = Websitesettings::where('id', 1)->first();
         return view('layouts.default.template.portfolio', $data);
     }

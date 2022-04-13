@@ -12,7 +12,7 @@ $(function () {
 	/* ------------- Scroll Fixed second Header Industries --------------- */
 	var num = $(this).scrollTop() !== 0;
 	$(window).bind('scroll', function () {
-		if (pageUrl !== 'home') {
+		// if (pageUrl !== 'home') {
 			if ($(window).scrollTop() > num) {
 				$('.scrollbg-show').addClass('show-strip');
 				$('.menu-bg').addClass('reverseMenu');
@@ -35,7 +35,7 @@ $(function () {
 				$('.search__color').find('.search-icon').css('top', '35px');
 				$('.search__color').find('.btn1').css('color', '#fff');
 			}
-		}
+		// }
 	});
 
 	/* ------------- SCROLL UP FUNCTION HOME Pages --------------- */
