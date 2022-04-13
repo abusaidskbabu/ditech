@@ -336,10 +336,10 @@
                     <div class="row mb50">
                         <div class="col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                             <div class="card-our-vision text-center">
-                                <div class="block-icon-card text-info"> <i class="fas fa-cloud"></i> 
+                                <div class="block-icon-card text-dark"> <i class="fas fa-cloud"></i> 
                                 </div>
                                 <div class="content-card">
-                                    <h4 class="my-3 font-weight-light text-info">Our Mission</h4>
+                                    <h4 class="my-3 font-weight-light text-dark">Our Mission</h4>
                                     <p class="text-justify">{{ $about->our_mission }}</p>
                                 </div>
                             </div>
@@ -361,10 +361,10 @@
 
                         <div class="col-md-6 col-lg-6 mt30  wow fadeInUp" data-wow-delay="0.9s">
                             <div class="card-our-vision text-center">
-                                <div class="block-icon-card text-info"> <i class="fas fa-marker"></i> 
+                                <div class="block-icon-card text-dark"> <i class="fas fa-marker"></i> 
                                 </div>
                                 <div class="content-card">
-                                    <h4 class="my-3 font-weight-light text-info">Our Vission</h4>
+                                    <h4 class="my-3 font-weight-light text-dark">Our Vision</h4>
                                     <p class="text-justify">{{ $about->our_company }}</p>
                                 </div>
                             </div>
