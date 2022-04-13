@@ -147,21 +147,22 @@
 			$(".dropdown-2").removeClass('d-block');
 			$(".dropdown-2").addClass('d-none');
 		});
-		
-		$(".dropdown-1").hover(function(){
-			
-			var dropdownMenu = $(this).attr('id');
-			
-			$(".dropdown-2").each(function() {
-				$(this).removeClass('d-block');
-				$(this).addClass('d-none');
-			})
-			
-			$(".ex"+dropdownMenu).removeClass('d-none');
-			$(".ex"+dropdownMenu).addClass('d-block');
-			
-		});
-	});     
+	});  
+
+$(document).on('mouseover','.expend-dropdown',function(){
+
+      var dropdownMenu = $(this).attr('id');
+      $(".dropdown-2").each(function() {
+        $(this).removeClass('d-block');
+        $(this).addClass('d-none');
+      })
+      
+      $(".ex"+dropdownMenu).removeClass('d-none');
+      $(".ex"+dropdownMenu).addClass('d-block');
+  
+})
+
+
 </script>
 
 

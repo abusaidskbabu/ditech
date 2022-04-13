@@ -50,7 +50,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 300px;">
                     <ul class="nav">
           						@foreach(DB::table('dit_services')->where('status',1)->where('parrent','Yes')->get() as $row)
-          							<li class="expend-dropdown dropdown-1" id="{{$row->id}}">
+          							<li class="expend-dropdown" id="{{$row->id}}">
           								<a class="dropdown-item text-uppercase"  href="{{ route('company.services.single', $row->id )}}">{{ $row->service_name }} @if(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->count() > 0) <i class="nav-arr-icn fa fa-arrow-right"></i> @endif</a>
           								<ul class="nav d-none dropdown-2 ex{{$row->id}}" >
           									@foreach(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->get() as $row2)
