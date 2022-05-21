@@ -2,7 +2,7 @@
   <article>
     <div class="container pt50 pb50">
       <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-12 col-xs-12">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 col-xs-12">
           
           <ul class="list-unstyled footer-txt">
             <li class="m-t-0">
@@ -10,13 +10,14 @@
                 <img id="logo" src="{{ asset('uploads/images/'.config('sximo')['cnf_logo'])}}">
               </a>
             </li>
-            <li>
-              <p class="text-white"><i class="fas fa-map-marker-alt"></i> 
-                {{ $setting->address }}
-              </p>
-            </li>
-            <li><a href="mailto:{{ $setting->email }}" title=""><i class="fas fa-envelope "></i> {{ $setting->email }}</a></li>
-            <li><a href="tel:{{ $setting->phone }}" class="font-weight-bold" title=""><i class="fas fa-phone "></i> {{ $setting->phone }}</a></li>
+            <li><a class="" href="{{ route('about') }}">Overview</a></li>
+            <li><a class="e" href="{{ route('management.profile') }}">Management Profile</a></li>
+            <li><a class="" href="{{ route('portfolio') }}">Portfolio</a></li>
+            <li><a class="" href="{{ route('career')}}">Careers</a></li>
+            <li><a class="" href="{{ route('newsroom')}}">Newsroom</a></li>
+            <li><a class="" href="{{ route('blogs')}}">Blogs</a></li>
+            <li><a class="" href="{{ route('whyUs') }}">Why Choose Us</a></li>
+            <li><a class="" href="{{ route('faqs')}}">FAQs</a></li>
           </ul>
         </div>
         <div class="col-lg-2 col-md-6 col-sm-6 col-12 col-xs-12">
@@ -49,8 +50,18 @@
 			@endforeach
           </ul>
         </div>
-        <div class="col-lg-2 col-md-6 col-sm-6 col-12 col-xs-12">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 col-xs-12">
           <h3 class="ftr-head mt-sm-20">Connect with us</h3>
+          
+          <ul class="list-unstyled footer-txt">
+            <li>
+              <p class="text-white"><i class="fas fa-map-marker-alt"></i> 
+                {{ $setting->address }}
+              </p>
+            </li>
+            <li><a href="mailto:{{ $setting->email }}" title=""><i class="fas fa-envelope "></i> {{ $setting->email }}</a></li>
+            <li><a href="tel:{{ $setting->phone }}" class="font-weight-bold" title=""><i class="fas fa-phone "></i> {{ $setting->phone }}</a></li>
+          </ul>
           <ul class="list-inline footer-txt">
             <li> 
               <a title="Follow us on Twitter" target="_blank" href="{{ $setting->twitter }}"> 
@@ -174,7 +185,7 @@ $(document).on('mouseover','.expend-dropdown',function(){
 
     
 
-
+        <!--<p>Design and Developed by DITS</p>-->
             
 
         </div>

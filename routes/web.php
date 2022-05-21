@@ -125,6 +125,8 @@ Route::post('sendmail','VmslController@contact_email')->name('contact.email');
 	Route::get('under-attack-hotline','VmslController@underattackhotline')->name('under.attack.hotline');
 	Route::post('under-attack-hotline/store','VmslController@underattackhotlineStore')->name('under.attack.hotline.store');
 	Route::post('contact/store','VmslController@contactStore')->name('contact.store');
+	
+	Route::post('search','VmslController@search')->name('search');
 
 
 //Talent sourching

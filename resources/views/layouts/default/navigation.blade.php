@@ -115,7 +115,7 @@
               
               <li> <a href="{{ route('industry') }}" class="text-uppercase" title="Industry">Industry</a> </li>
 
-              {{-- <li> <a href="{{ route('news')}}" class="text-uppercase" title="Navigate your next digital framework">Blog</a> </li> --}}
+              {{-- <li> <a href="{{ route('news')}}" class="text-uppercase" title="">Blog</a> </li> --}}
           
           
 
@@ -154,13 +154,11 @@
         <div class="search" aria-label="Site Search">
           <div class="search__inner search__inner--up">
             <!--action needs to be attached-->
-            <form class="search__form" action="https://www.infosys.com/search.html" method="get">
+            <form class="search__form" action="{{ route('search') }}" method="post">
               <input id="k" class="search__input" name="k" type="search" placeholder="What are you looking for?" autocomplete="off" spellcheck="false" title="Search" aria-label="search text"/>
                                      <label for="k" class="none">Search</label>
               <span class="search__info">Hit enter to search or ESC to close</span>
               <label id="iki"><input type="checkbox" name="iki" Checked/> Search only in IKI</label>
-              <!-- <sly data-sly-test=""><input id="search-categories" type="hidden" name="c" value="" /></sly> -->
-
             </form>
           </div>
                        <button id="btn-search-close" class="btn1 btn--search-close" aria-label="Close search form">
@@ -249,33 +247,33 @@
           </div>
         </div>
         <!-- Side Menu Title -->
-        <div class="col-md-3 col-sm-12 col-xs-12 menuItems"> <a href="index.html" title="Go to Infosys Home" aria-label="Go to Infosys Home"> 
-          <img src="{{ asset('uploads/images/'.$setting->logo)}}" alt="Infosys"
+        <div class="col-md-3 col-sm-12 col-xs-12 menuItems"> <a href="/"  aria-label="Go to Infosys Home"> 
+          <img src="{{ asset('uploads/images/'.$setting->logo)}}" 
               class="img-responsive logo-inner"> </a>
           <ul class="list-unstyled">
             <li title="Navigate your next"> 
-              <a href="{{ url('/') }}" title="Navigate your next" class="text-uppercase">Home
+              <a href="{{ url('/') }}" title="" class="text-uppercase">Home
                 <span class="un-line hidden-sm hidden-xs hidden-tab"></span> 
               </a> 
             </li>
-            <li title="About Us"> <a href="javascript:void(0);" title="About Us" class="about-txt text-uppercase" target="_self" aria-label="Hover to show submenu" aria-haspopup="false" aria-expanded="false">Company <span
+            <li> <a href="javascript:void(0);"  class="about-txt text-uppercase" target="_self" aria-label="Hover to show submenu" aria-haspopup="false" aria-expanded="false">Company <span
                   class="un-line hidden-sm hidden-xs hidden-tab"></span> </a> </li>
-            <li title="Services"> 
-              <a href="javascript:void(0);" title="Services" class="services text-uppercase" target="_self">Solutions 
+            <li > 
+              <a href="javascript:void(0);" class="services text-uppercase" target="_self">Solutions 
                 <span class="un-line hidden-sm hidden-xs hidden-tab"></span> 
               </a> 
             </li>
 			
 			
 			
-			<li title="Platforms"> <a href="javascript:void(0);" title="Platforms" class="platforms text-uppercase" target="_self" aria-label="Hover to show submenu" aria-haspopup="false" aria-expanded="false">Services <span
+			<li > <a href="javascript:void(0);"  class="platforms text-uppercase" target="_self" aria-label="Services" aria-haspopup="false" aria-expanded="false">Services <span
                   class="un-line hidden-sm hidden-xs hidden-tab"></span> </a> </li>
 			
             
-              <li> <a href="{{ route('industry') }}" class="text-uppercase" title="Navigate your next digital framework">Industry</a> </li>
+              <li> <a href="{{ route('industry') }}" class="text-uppercase" >Industry</a> </li>
 
-            <li title="Navigate your next"> 
-              <a href="{{ route('contact.page')}}" title="Navigate your next" class="text-uppercase">Contact
+            <li title="Contact"> 
+              <a href="{{ route('contact.page')}}" class="text-uppercase">Contact
                 <span class="un-line hidden-sm hidden-xs hidden-tab"></span> 
               </a> 
             </li>

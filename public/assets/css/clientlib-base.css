@@ -9586,7 +9586,7 @@ ul.footer-txt > li > a {
 
 /* Layout for search container */
 .search__input {
-	font-size: 7vw;
+	font-size: 2vw;
 	line-height: 1;
 	display: inline-block;
 	box-sizing: border-box;

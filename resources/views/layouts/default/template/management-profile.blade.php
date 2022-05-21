@@ -180,7 +180,7 @@
 }
 
 .hovereffect p {
-  width: 31%;
+  width: 32%;
   text-transform: none;
   font-size: 15px;
   line-height: 2;
@@ -263,10 +263,11 @@
             <div class="group-tour-guide pb50">
                 <div class="container wow fadeInUp" data-wow-delay="0.6s">
                     <div class="row" id="">
-							<div class="col-lg-1 ml-2"></div>
-                        @foreach(DB::table('management_profile')->where('status', 1)->orderBy('sort_number','ASC')->get() as $row)
-                            <div class="col-lg-3">
-                                <div class="card card-team animated-Fade-In-1 text-center">
+							
+                        @foreach(DB::table('management_profile')->where('status', 1)->orderBy('sort_number','ASC')->limit(1)->get() as $row)
+                            
+                            <div class="col-lg-12">
+                                <div class="card card-team animated-Fade-In-1 text-center" style="text-align: center;width: 260px; margin: 0 auto;">
                                     <div class="hovereffect">
                                         <img class="img-responsive" src="{{url('/')}}/uploads/images/team/{{ $row->image }}" alt="" style="height: 250px;width:100%;">
                                         <div class="overlay">
@@ -301,6 +302,51 @@
                             </div>
                         @endforeach
                     </div>
+                    
+                    <div class="row" id="">
+                        @foreach(DB::table('management_profile')->where('status', 1)->where('sort_number', '>', 1)->orderBy('sort_number','ASC')->get() as $row)
+                            
+                            <div class="col-lg-6">
+                                <div class="card card-team animated-Fade-In-1 text-center" style="text-align: center;width: 260px; margin: 0 auto;">
+                                    <div class="hovereffect">
+                                        <img class="img-responsive" src="{{url('/')}}/uploads/images/team/{{ $row->image }}" alt="" style="height: 250px;width:100%;">
+                                        <div class="overlay">
+                                            <h2></h2>
+                                            <div class="rotate">
+                                                <p class="group1">
+                                                    <a href="{{ $row->twitter }}">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a href="{{ $row->facebook }}">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </p>
+                                                    <hr>
+                                                    <hr>
+                                                <p class="group2">
+                                                    <a href="{{ $row->linkedin }}">
+                                                        <i class="fab fa-linkedin-in"></i>
+                                                    </a>
+                                                    <a href="mailto:{{ $row->email }}">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4>{{ $row->name }}</h4>
+                                        <h5 class="card-title"><b>{{ $row->position }}</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            @if($loop->iteration == 1)
+                            <div class="col-lg-3">
+                            </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    
                 </div>
             </div>
         </div>

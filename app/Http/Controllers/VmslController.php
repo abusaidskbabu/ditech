@@ -484,6 +484,22 @@ class VmslController extends Controller{
         $data['setting'] = Websitesettings::where('id', 1)->first();
         return view('layouts.default.template.product-details', $data);
 	}
+	
+	public function search(Request $request){
+	    
+	    $data['title'] = 'Search Result';
+		$data['services'] = DB::table('dit_services')->where('status',1)->where('service_name', 'like', '%' .$request->k.'%')->get();
+		
+		$data['products'] = DB::table('products_solution')->where('status', 1)->where('title', 'like', '%' .$request->k. '%' )->get();
+		
+		
+		$data['blog_news'] = DB::table('dit_blocg_news')->where('status',1)->where('heading', 'like', '%' .$request->k. '%')->get();
+		
+		
+        $data['breadcum'] = DB::table('con_banner_slider')->where('type', 'why_us')->where('status', 1)->first();
+	    $data['setting'] = Websitesettings::where('id', 1)->first();
+	    return view('layouts.default.template.search', $data);
+	}
 
     public function underattackhotline(){
         $data['title'] = 'Under Attack Hotline';
