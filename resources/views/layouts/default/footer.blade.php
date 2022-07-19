@@ -6,7 +6,7 @@
           
           <ul class="list-unstyled footer-txt">
             <li class="m-t-0">
-              <a class="" href="{{ url('/') }}" title="Go to Infosys Home" aria-label="Go to Infosys Home">
+              <a class="" href="{{ url('/') }}" title="Go to DITECH" aria-label="Go to DITECH">
                 <img id="logo" src="{{ asset('uploads/images/'.config('sximo')['cnf_logo'])}}">
               </a>
             </li>
@@ -24,7 +24,7 @@
           <h3 class="ftr-head mt-xs-20">Solutions</h3>
           <ul class="list-unstyled footer-txt">
 			@foreach(DB::table('dit_services')->where('status',1)->where('parrent','Yes')->get() as $row)
-				<li><a href="{{ route('company.services.single', $row->id )}}" title="EdgeVerve Systems" target="_blank">{{ $row->service_name }}</a></li>
+				<li><a href="{{ route('company.services.single', str_replace(' ', '-', $row->service_name))}}" title="EdgeVerve Systems" target="_blank">{{ $row->service_name }}</a></li>
 			@endforeach
           </ul>
         </div>
@@ -46,7 +46,7 @@
           <h3 class="ftr-head mt-xs-20">Industries</h3>
           <ul class="list-unstyled footer-txt">
 			@foreach(DB::table('industries')->where('status',1)->get() as $row)
-				<li><a href="{{ route('industry.details',$row->id) }}" title="">{{ $row->title }}</a></li>
+				<li><a href="{{ route('industry.details',str_replace(' ', '-', $row->title)) }}" title="">{{ $row->title }}</a></li>
 			@endforeach
           </ul>
         </div>

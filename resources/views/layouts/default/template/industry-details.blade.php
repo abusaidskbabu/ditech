@@ -45,7 +45,7 @@
 	    		<div class="row">
 	      			<div class="col-md-9 col-sm-12 col-xs-12 ">
 			            <h1 class="h2-heading white-color l-top">
-							{{ $title }}
+							{{-- {{ $title }} --}}
 			            </h1>
 	  				</div>
 	    		</div>
@@ -139,7 +139,7 @@
 		                	</div>
 		              	</div>
 		              	<div class="wcard-back">
-		              		<a href="#">
+		              		<a href="{{ route('products.single',str_replace(' ', '-', $row->title)) }}">
 			                	<span>Read More</span>
 			                </a>
 			            </div>

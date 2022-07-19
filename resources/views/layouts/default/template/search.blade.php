@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-9 col-sm-12 col-xs-12 ">
                     <h1 class="h2-heading white-color l-top">
-                        {{ $title }}
+                        {{-- {{ $title }} --}}
                     </h1>
                 </div>
             </div>
@@ -58,7 +58,7 @@
 		    <div class="row mb50">
 		      <div class="grid-do_more col-md-12 col-sm-12 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
 		              @foreach($services as $row)
-		              <a href="{{ route('company.services.single', $row->id )}}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12  p-3" style="height:100%;">
+		              <a href="{{ route('company.services.single', str_replace(' ', '-', $row->service_name))}}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12  p-3" style="height:100%;">
                           <div  class="row service_col_border" style="height:300px;">
                             <div class="col-lg-12 col-12 text-center">
                               <h3 class=" text-uppercase ">{!! $row->service_icone !!}</h3>
@@ -98,7 +98,7 @@
 		                	</div>
 		              	</div>
 		              	<div class="wcard-back">
-		              		<a href="{{ route('products.single',$row->id) }}">
+		              		<a href="{{ route('products.single',str_replace(' ', '-', $row->title)) }}">
 			                	<span>Read More</span>
 			                </a>
 			            </div>
@@ -131,7 +131,7 @@
                         @endif
                           mb-xs-20 p-1 ctrl-width-mob">
                           <div class="col-eq-ht"> 
-                            <a href="{{ route('news.details', $row->id)}}" title="{{ $row->heading }}">
+                            <a href="{{ route('news.details', str_replace(' ', '-', $row->heading))}}" title="{{ $row->heading }}">
                             <div class="bg-index-artificial">
                               <div class="news-grid-imgs"> 
                                 <img src="{{url('/')}}/uploads/images/news/{{ $row->image }}" class="img-responsive" alt="{{ $row->heading }}" style="height:250px;width:100%;"> 

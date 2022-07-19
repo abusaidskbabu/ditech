@@ -80,8 +80,8 @@
             </div>
           </div>
 
-          <div class="row mt50">
-			<div class="col-lg-12 career-explore text-center">
+          <div class="row mt10">
+			<div class="col-lg-12 career-explore text-center mt-0">
 				<button class="btn btn-no-effect reques-btn text-uppercase" id="solution_btn">Solutions</button>
 				<button class="btn btn-no-effect reques-btn text-uppercase" id="service_btn">SERVICES</button>
 			</div>
@@ -90,7 +90,7 @@
                 $services = DB::table('dit_services')->where('status',1)->where('created_at',1)->limit(8)->get();
               @endphp
               @foreach($services as $row)
-				<a href="{{ route('company.services.single', $row->id )}}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12  p-3" style="height:100%;">
+				      <a href="{{ route('company.services.single', str_replace(' ', '-', $row->service_name))}}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12  p-3" style="height:100%;">
                   <div  class="row service_col_border" style="height:300px;">
                     <div class="col-lg-12 col-12 text-center">
                       <h3 class=" text-uppercase ">{!! $row->service_icone !!}</h3>
@@ -123,7 +123,8 @@
 		                	</div>
 		              	</div>
 		              	<div class="wcard-back">
-		              		<a href="{{ route('products.single',$row->id) }}">
+
+		              		<a href="{{ route('products.single',str_replace(' ', '-', $row->title)) }}">
 			                	<span>Read More</span>
 			                </a>
 			            </div>
@@ -268,7 +269,7 @@
 				<div class="clearfix visible-sm visible-xs"></div>
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb50">
 				  <div class="aboutus-grid text-center">
-					<p class="aboutus-grid-title"> <span>{{ $section_four->skiled_expart}}</span>+</p>
+					<p class="aboutus-grid-title"> <span>{{ $section_four->skiled_expart}}</span></p>
 					<p class="aboutus-grid-desc ">SKILLED EXPERTS</p>
 				  </div>
 				</div>
@@ -306,7 +307,7 @@
 								              <div class="overlay">
                                   <h2>{{$row->title}}</h2>
                                   <p>
-                                    <a href="{{ route('portfolio.details', $row->id)}}">VIEW MORE</a>
+                                    <a href="{{ route('portfolio.details', str_replace(' ', '-', $row->title))}}">VIEW MORE</a>
                                   </p>
 								              </div>
                           </div>
@@ -421,7 +422,7 @@
                       @endphp
                       @foreach($blog_news as $row)
                       <div class="investors-news-row relative"> 
-                        <a href="{{ route('news.details', $row->id)}}" target="_blank" title="{{ $row->heading }}">
+                        <a href="{{ route('news.details', str_replace(' ', '-', $row->heading))}}" target="_blank" title="{{ $row->heading }}">
                         <h3 class="investors-news-desc">{{ $row->heading }}
                           <img class="img-right-arrow" src="{{ asset('assets') }}/images/responsive/newdesign/right-arrow.svg" alt="arrow"></h3>
                         </a> 
@@ -437,7 +438,7 @@
                       @foreach($blog_news as $row)
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mb-xs-20 p0 ctrl-width-mob">
                         <div class="col-eq-ht"> 
-                          <a href="{{ route('news.details', $row->id)}}" title="{{ $row->heading }}">
+                          <a href="{{ route('news.details', str_replace(' ', '-', $row->heading))}}" title="{{ $row->heading }}">
                           <div class="bg-index-artificial">
                             <div class="news-grid-imgs"> 
                               <img src="{{url('/')}}/uploads/images/news/{{ $row->image }}" class="img-responsive" alt="{{ $row->heading }}" style="height:230px; width:100%;"> 
@@ -474,8 +475,8 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center wow fadeInUp" data-wow-delay="0.3s"> 
             <img src="{{ asset('assets') }}/images/18/vertical-line.png" alt="" />
-            <h2 class="h2-heading">Careers</h2>
-            <p class="col-lg-8 col-md-8 col-md-offset-2 para-txt light-gray mb50">Every Infoscion is the navigator of our clients’ digital transformation</p>
+            <h2 class="h2-heading">Career</h2>
+            <p class="col-lg-8 col-md-8 col-md-offset-2 para-txt light-gray mb50">Every open role in DITECH</p>
           </div>
         </div>
         <div class="row">
@@ -505,7 +506,7 @@
         </div>
         <div class="row career-explore text-center wow fadeInUp" data-wow-delay="0.9s">
           <p class="careers-findopportunites">Find opportunities right for you</p>
-          <a class="btn btn-no-effect reques-btn text-uppercase" href="{{ route('career')}}" title="Explore Careers">Explore Careers</a> </div>
+          <a class="btn btn-no-effect reques-btn text-uppercase" href="{{ route('career')}}" title="Explore Careers">Explore Career</a> </div>
       </article>
     </section>
 
@@ -603,7 +604,7 @@
             </li>
             <li class="no-scrollify"> 
             <a href="#careers">
-               <span>Careers</span>
+               <span>Career</span>
              </a>
            </li>
              <li class="no-scrollify">  
@@ -658,12 +659,13 @@
 <script type="text/javascript">
 	$(document).on('click', '#solution_btn', function(){
 		$('#solution_area').removeClass('d-none');
-        $('#solution_area').addClass('d-block');
+    $('#solution_area').addClass('d-block');
 		
 		$('#service_area').removeClass('d-block');
-        $('#service_area').addClass('d-none');
+    $('#service_area').addClass('d-none');
 		
-		$("#solution_btn").css("background-color", "transparent !important");
+		$("#solution_btn").addClass('active');
+    $("#service_btn").removeClass('active');
 	});
 	
 	$(document).on('click', '#service_btn', function(){
@@ -673,8 +675,8 @@
 		$('#service_area').removeClass('d-none');
         $('#service_area').addClass('d-block');
 		
-		$("#service_btn").css("background-color", "transparent !important")
-		
+		$("#solution_btn").removeClass('active');
+    $("#service_btn").addClass('active');
 	});
 	
     $(document).on('click', '.category', function(){  

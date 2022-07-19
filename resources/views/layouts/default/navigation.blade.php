@@ -29,7 +29,7 @@
           
               <li class="dropdown"> 
                 <a href="#" title="About" class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a> 
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 200px;">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 215px;left: -6px;">
                   <ul class="nav">
                     <li><a class="dropdown-item text-uppercase" href="{{ route('about') }}">Overview</a></li>
                     <li><a class="dropdown-item text-uppercase" href="{{ route('management.profile') }}">Management Profile</a></li>
@@ -51,10 +51,10 @@
                     <ul class="nav">
           						@foreach(DB::table('dit_services')->where('status',1)->where('parrent','Yes')->get() as $row)
           							<li class="expend-dropdown" id="{{$row->id}}">
-          								<a class="dropdown-item text-uppercase"  href="{{ route('company.services.single', $row->id )}}">{{ $row->service_name }} @if(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->count() > 0) <i class="nav-arr-icn fa fa-arrow-right"></i> @endif</a>
+          								<a class="dropdown-item text-uppercase"  href="{{ route('company.services.single', str_replace(' ', '-', $row->service_name))}}">{{ $row->service_name }} @if(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->count() > 0) <i class="nav-arr-icn fa fa-arrow-right"></i> @endif</a>
           								<ul class="nav d-none dropdown-2 ex{{$row->id}}" >
           									@foreach(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->get() as $row2)
-          										<li><a class="dropdown-item text-uppercase" href="{{ route('company.services.single', $row2->id )}}">{{ $row2->service_name }}</a></li>
+          										<li><a class="dropdown-item text-uppercase" href="{{ route('company.services.single', str_replace(' ', '-', $row2->service_name))}}">{{ $row2->service_name }}</a></li>
           									@endforeach
           								</ul>
           							</li>
@@ -63,7 +63,7 @@
                 </div>
             </li>
 			
-			<li class="dropdown"> 
+			     <li class="dropdown"> 
                 <a href="#" title="Services" class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a> 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 250px;">
                     <ul class="nav">
@@ -76,7 +76,7 @@
               </a>
 							<ul class="nav d-none dropdown-2 exservice" id="">
 								@foreach(DB::table('products_solution')->where('status',1)->where('type', 'service')->get() as $row3)
-									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
+									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single',str_replace(' ', '-', $row3->title)) }}">{{ $row3->title }}</a></li>
 								@endforeach
 							</ul>
 						</li>
@@ -89,7 +89,7 @@
               </a>
 							<ul class="nav d-none dropdown-2 exconsultancy" id="consultancy">
 								@foreach(DB::table('products_solution')->where('status',1)->where('type', 'consultancy')->get() as $row3)
-									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
+									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single',str_replace(' ', '-', $row3->title)) }}">{{ $row3->title }}</a></li>
 								@endforeach
 							</ul>
 						</li>
@@ -102,7 +102,7 @@
               </a>
 							<ul class="nav d-none dropdown-2 extraining" id="training">
 								@foreach(DB::table('products_solution')->where('status',1)->where('type', 'training')->get() as $row3)
-									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
+									<li><a class="dropdown-item text-uppercase" href="{{ route('products.single',str_replace(' ', '-', $row3->title)) }}">{{ $row3->title }}</a></li>
 								@endforeach
 							</ul>
 						</li>
@@ -113,7 +113,17 @@
 
              <!-- <li> <a href="{{ route('products') }}" class="text-uppercase" title="Navigate your next digital framework">Service</a> </li>-->
               
-              <li> <a href="{{ route('industry') }}" class="text-uppercase" title="Industry">Industry</a> </li>
+              {{-- <li> <a href="{{ route('industry') }}" class="text-uppercase" title="Industry">Industry</a> </li> --}}
+              <li class="dropdown"> 
+                <a href="{{ route('industry') }}" title="Industry" class="nav-link dropdown-toggle text-uppercase" id="navbarDropdown" data-toggle="dropdown">Industry</a> 
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 280px; left: -18%">
+                  <ul class="nav">
+                    @foreach(DB::table('industries')->where('status',1)->orderBy('title', 'DESC')->GET() AS $row)
+                    <li><a class="dropdown-item text-uppercase" href="{{ route('industry.details',str_replace(' ', '-', $row->title)) }}">{{ $row->title }}</a></li>
+                    @endforeach
+                  </ul>
+                </div>
+              </li>
 
               {{-- <li> <a href="{{ route('news')}}" class="text-uppercase" title="">Blog</a> </li> --}}
           
@@ -152,12 +162,12 @@
         </div>
         </div>
         <div class="search" aria-label="Site Search">
-          <div class="search__inner search__inner--up">
+          <div class="search__inner search__inner--up" style="background-image: url({{ asset('assets/img/search-bg.jpeg') }}); background-size: cover;">
             <!--action needs to be attached-->
             <form class="search__form" action="{{ route('search') }}" method="post">
-              <input id="k" class="search__input" name="k" type="search" placeholder="What are you looking for?" autocomplete="off" spellcheck="false" title="Search" aria-label="search text"/>
-                                     <label for="k" class="none">Search</label>
-              <span class="search__info">Hit enter to search or ESC to close</span>
+              <input id="k" class="search__input" name="k" type="search" placeholder="" autocomplete="off" spellcheck="false" title="Search" aria-label="search text" style="color: white; " />
+              <label for="k" class="none">Search</label>
+              <span class="search__info white-color">Hit enter to search or ESC to close</span>
               <label id="iki"><input type="checkbox" name="iki" Checked/> Search only in IKI</label>
             </form>
           </div>
@@ -168,7 +178,9 @@
           </button>
           <div class="search__inner search__inner--down">
             <!-- search related content-->
-            <div class="search__related"></div>
+            <div class="search__related">
+              {{-- <img src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" height="100%" width="100%"> --}}
+            </div>
           </div>
         </div>
         
@@ -266,11 +278,15 @@
 			
 			
 			
-			<li > <a href="javascript:void(0);"  class="platforms text-uppercase" target="_self" aria-label="Services" aria-haspopup="false" aria-expanded="false">Services <span
+			       <li > <a href="javascript:void(0);"  class="platforms text-uppercase" target="_self" aria-label="Services" aria-haspopup="false" aria-expanded="false">Services <span
                   class="un-line hidden-sm hidden-xs hidden-tab"></span> </a> </li>
-			
+			     
+            <li > <a href="javascript:void(0);"  class="iki-text text-uppercase" target="_self" aria-label="Industry" aria-haspopup="false" aria-expanded="false">Industry <span
+                  class="un-line hidden-sm hidden-xs hidden-tab"></span> </a> </li>
             
-              <li> <a href="{{ route('industry') }}" class="text-uppercase" >Industry</a> </li>
+            {{-- <li> <a href="{{ route('industry') }}" class="text-uppercase" >Industry</a> </li> --}}
+
+
 
             <li title="Contact"> 
               <a href="{{ route('contact.page')}}" class="text-uppercase">Contact
@@ -331,7 +347,7 @@
                     </a>
                     <ul class="">
                       @foreach(DB::table('dit_services')->where('status',1)->where('parrent_id', $row->id)->get() as $row2)
-                        <li><a class="dropdown-item" href="{{ route('company.services.single', $row2->id )}}">{{ $row2->service_name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('company.services.single', str_replace(' ', '-', $row2->service_name))}}">{{ $row2->service_name }}</a></li>
                       @endforeach
                     </ul>
                   </div>
@@ -351,32 +367,32 @@
               <h2 class="h2-heading mb10">Services</h2>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 align-list">
-				<div class="row">
-					<div class="col-md-4 col-sm-3 col-xs-12"> 
-						<a href="{{ route('products')}}" class="black-color"><h3 class="hear-txt-sub">Service</h3></a>
-            <ul>
-              @foreach(DB::table('products_solution')->where('status',1)->where('type', 'service')->get() as $row3)
-                <li><a class="dropdown-item" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
-              @endforeach
-            </ul>
-					</div>
-					<div class="col-md-4 col-sm-3 col-xs-12"> 
-						<a href="{{ route('consultancy')}}" class="black-color"><h3 class="hear-txt-sub">Consultancy</h3></a>
-            <ul>
-              @foreach(DB::table('products_solution')->where('status',1)->where('type', 'consultancy')->get() as $row3)
-                <li><a class="dropdown-item" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
-              @endforeach
-            </ul>
-					</div>
-					<div class="col-md-4 col-sm-3 col-xs-12"> 
-						<a href="{{ route('training')}}" class="black-color"><h3 class="hear-txt-sub">Training</h3></a>
-            <ul>
-                @foreach(DB::table('products_solution')->where('status',1)->where('type', 'training')->get() as $row3)
-                  <li><a class="dropdown-item" href="{{ route('products.single', $row3->id )}}">{{ $row3->title }}</a></li>
-                @endforeach
-            </ul>
-					</div>
-				</div>
+    				<div class="row">
+    					<div class="col-md-4 col-sm-3 col-xs-12"> 
+    						<a href="{{ route('products')}}" class="black-color"><h3 class="hear-txt-sub">Service</h3></a>
+                <ul>
+                  @foreach(DB::table('products_solution')->where('status',1)->where('type', 'service')->get() as $row3)
+                    <li><a class="dropdown-item" href="{{ route('products.single',str_replace(' ', '-', $row3->title)) }}">{{ $row3->title }}</a></li>
+                  @endforeach
+                </ul>
+    					</div>
+    					<div class="col-md-4 col-sm-3 col-xs-12"> 
+    						<a href="{{ route('consultancy')}}" class="black-color"><h3 class="hear-txt-sub">Consultancy</h3></a>
+                <ul>
+                  @foreach(DB::table('products_solution')->where('status',1)->where('type', 'consultancy')->get() as $row3)
+                    <li><a class="dropdown-item" href="{{ route('products.single',str_replace(' ', '-', $row3->title)) }}">{{ $row3->title }}</a></li>
+                  @endforeach
+                </ul>
+    					</div>
+    					<div class="col-md-4 col-sm-3 col-xs-12"> 
+    						<a href="{{ route('training')}}" class="black-color"><h3 class="hear-txt-sub">Training</h3></a>
+                <ul>
+                    @foreach(DB::table('products_solution')->where('status',1)->where('type', 'training')->get() as $row3)
+                      <li><a class="dropdown-item" href="{{ route('products.single',str_replace(' ', '-', $row3->title)) }}">{{ $row3->title }}</a></li>
+                    @endforeach
+                </ul>
+    					</div>
+    				</div>
             </div>
             
           </div>
@@ -415,8 +431,38 @@
               </ul>
             </div>
 
+            <div class="col-md-12 col-sm-12 col-xs-12 align-list">
+              <img src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" height="100%" width="100%">
+            </div>
+
           </div>
         </div>
+
+        <div class="iki-menu wow fadeInLeftBig" data-wow-duration="0.3s">
+          <div class="cross visible1024-cross cros_for_mobile"> <a title="close" href="javascript:void(0);" alt="Cross" aria-label="Close menu" aria-haspopup="false" aria-expanded="false"> <i class="fas fa-times"></i> </a> </div>
+          <div class="submenu-portion">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <h2 class="h2-heading mb10">Industry</h2>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12 align-list">
+              <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-xs-12"> 
+                  <ul>
+                    @foreach(DB::table('industries')->where('status',1)->orderBy('title', 'DESC')->GET() AS $row)
+                      <li><a class="dropdown-item text-uppercase" href="{{ route('industry.details',str_replace(' ', '-', $row->title)) }}">{{ $row->title }}</a></li>
+                    @endforeach
+                  </ul>
+                </div>
+                
+              </div>
+            </div>
+            
+
+          </div>
+        </div>
+
       </div>
     </nav>
   </div>

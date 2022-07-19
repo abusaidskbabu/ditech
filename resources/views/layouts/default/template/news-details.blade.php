@@ -21,7 +21,7 @@
 	                              	</li>
 	                              	<li class="dropdown mega-dropdown">
 	                                 	<a href="#" class="dropdown-toggle disabled" data-toggle="dropdown">
-	                                    	{{ $title }}
+	                                    	{{-- {{ $title }} --}}
 	                                 	</a>
 	                              	</li>
                            

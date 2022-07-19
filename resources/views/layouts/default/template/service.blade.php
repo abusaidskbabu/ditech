@@ -39,7 +39,7 @@
     		<div class="row">
       			<div class="col-md-9 col-sm-12 col-xs-12 ">
 		            <h1 class="h2-heading white-color l-top">
-						{{ $title }}
+						{{-- {{ $title }} --}}
 		            </h1>
   				</div>
     		</div>
@@ -94,12 +94,12 @@
 		                $services = DB::table('dit_services')->where('status',1)->where('created_at',1)->get();
 		              @endphp
 		              @foreach($services as $row)
-		              <a href="{{ route('company.services.single', $row->id )}}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12  p-3" style="height:100%;">
+		              <a href="{{ route('company.services.single', str_replace(' ', '-', $row->service_name))}}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12  p-3" style="height:100%;">
                           <div  class="row service_col_border" style="height:300px;">
                             <div class="col-lg-12 col-12 text-center">
                               <h3 class=" text-uppercase ">{!! $row->service_icone !!}</h3>
                               <h5 class=" text-uppercase ">{{$row->service_name}}</h5>
-                              <p class=" text-dark">{{ Str::limit($row->short_description, $limit = 100, $end = '...')}}</p>
+                              <p class=" text-dark">{{ Str::limit($row->short_description, $limit = 80, $end = '...')}}</p>
                               <span >Discover now <i class="fa fa-arrow-right"></i></span>
                             </div>
                           </div>

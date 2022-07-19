@@ -92,7 +92,7 @@
 .fix-menu a,
 .nyn-menu a {
   color: #fff;
-  font-family: myriad-pro, Arial;
+  font-family: 'Montserrat' !important;
 }
 
 .head-txt,
@@ -141,7 +141,7 @@
 .h2-heading {
   font-size: 50px;
   font-weight: 500;
-  font-family: 'Tungsten A', 'Tungsten B', 'Khand', sans-serif;
+  font-family: 'Montserrat' !important;
   line-height: 70px;
 }
 
@@ -150,7 +150,7 @@
   color: #000;
   font-size: 16px;
   margin: 10px 0;
-  font-family: myriad-pro, Arial;
+  font-family: 'Montserrat' !important;
   line-height: 1.1;
 }
 
@@ -177,19 +177,20 @@ menu .align-list > ul > li {
 
 .align-list > ul > li > a {
   color: #303030;
-  font-family: myriad-pro, Arial;
+  font-family: 'Montserrat' !important;
 }
 
 .align-list > ul > li > a:hover {
-  color: #000000;
-  font-family: myriad-pro, Arial;
+  color: #414141 !important;
+  font-family: 'Montserrat' !important;
+  font-weight: 600;
 }
 
 .menu .align-list > ul > li {
   font-size: 14px;
   color: #000;
   margin: 8px 0;
-  font-family: myriad-pro, Arial;
+  font-family: 'Montserrat' !important;
 }
 
 .submenu-portion img[src*='.svg'] {
@@ -234,7 +235,7 @@ menu .align-list > ul > li {
   font-weight: 900;
   font-size: 23px;
   text-decoration: none;
-  font-family: myriad-pro, Arial;
+  font-family: 'Montserrat' !important;
 }
 
 .un-line {
@@ -264,13 +265,13 @@ menu .align-list > ul > li {
   font-weight: 400;
   font-size: 18px;
   text-decoration: none;
-  font-family: myriad-pro, Arial;
+  font-family: 'Montserrat' !important;
 }
 
 .menuItems > ul > li > a:hover,
 .menuItems > ul > li.smalltext > a:hover {
   color: #000000;
-  font-family: myriad-pro, Arial;
+  font-family: 'Montserrat' !important;
 }
 
 .menuItems > ul > li:nth-child(12).social-icons {

@@ -16,7 +16,7 @@
 						          	
                               		<li class="dropdown mega-dropdown">
 	                                 	<a href="#" class="dropdown-toggle disabled" data-toggle="dropdown">
-	                                    	Services
+	                                    	Solution
 	                                    	<i class="fa fa-chevron-circle-down reverseArrow" aria-hidden="true"></i>
 	                                 	</a>
 	                              	</li>
@@ -45,7 +45,7 @@
 	    		<div class="row">
 	      			<div class="col-md-9 col-sm-12 col-xs-12 ">
 			            <h1 class="h2-heading white-color l-top">
-							{{ $title }}
+							{{-- {{ $title }} --}}
 			            </h1>
 	  				</div>
 	    		</div>
@@ -106,7 +106,7 @@
 		      <div class="grid-do_more col-md-12 col-sm-12 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
 				       
 		              @foreach($services as $row)
-		              <a href="{{ route('company.services.single', $row->id )}}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12  p-3" style="height:100%;">
+		              <a href="{{ route('company.services.single', str_replace(' ', '-', $row->service_name))}}" class="col-lg-3 col-md-3 col-sm-12 col-xs-12  p-3" style="height:100%;">
                           <div  class="row service_col_border" style="height:300px;">
                             <div class="col-lg-12 col-12 text-center">
                               <h3 class=" text-uppercase ">{!! $row->service_icone !!}</h3>

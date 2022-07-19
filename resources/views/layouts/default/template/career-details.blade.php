@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="wpo-section-title">
-                <h2>{{$title}}</h2>
+                {{-- <h2>{{$title}}</h2> --}}
             </div>
         </div>
     </div>

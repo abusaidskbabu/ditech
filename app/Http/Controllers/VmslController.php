@@ -22,9 +22,8 @@ use Hash;
 use Helper;
 use Carbon;
 
-
-
 use Illuminate\Support\Str;
+
 class VmslController extends Controller{
 	
     public function company_post(){
@@ -44,18 +43,20 @@ class VmslController extends Controller{
     }
 
     public function services(){
-        $data['title'] = 'Services';
+        $data['title'] = 'Solution';
         $data['breadcum'] = DB::table('con_banner_slider')->where('type', 'section_post')->where('status', 1)->get();
         $data['setting'] = Websitesettings::where('id', 1)->first();
         return view('layouts.default.template.service', $data);
     }
 
     public function services_single($id){
-        $post = Ourservices::where('id', $id)->first();
+
+        $post = Ourservices::where('service_name', str_replace('-', ' ', $id))->first();
+
         $data['single'] = $post;
         $data['title'] = $post->service_name;
         $data['breadcum'] = DB::table('con_banner_slider')->where('type', 'section_post')->where('status', 1)->get();
-		$data['services'] = DB::table('dit_services')->where('status',1)->where('parrent_id', $id)->get();
+		$data['services'] = DB::table('dit_services')->where('status',1)->where('parrent_id', $post->id)->get();
         $data['setting'] = Websitesettings::where('id', 1)->first();
         return view('layouts.default.template.service-single', $data);
     }
@@ -76,7 +77,7 @@ class VmslController extends Controller{
     }
 
     public function newsDetails($id){
-        $post = Blogsandnews::where('id', $id)->first();
+        $post = Blogsandnews::where('heading', str_replace('-', ' ', $id))->first();
         $data['single'] = $post;
         $data['title'] = $post->heading;
         $data['breadcum'] = DB::table('con_banner_slider')->where('type', 'news')->where('status', 1)->first();
@@ -95,10 +96,10 @@ class VmslController extends Controller{
     }
     
     public function circular($id=null){
-        $post = Vacancyannouncement::where('id', $id)->first();
+        $post = Vacancyannouncement::where('title', str_replace('-', ' ', $id))->first();
         $data['title'] = $post->title;
         $data['setting'] = Websitesettings::where('id', 1)->first();
-        $data['career'] = Vacancyannouncement::where('id', $id)->first();
+        $data['career'] = Vacancyannouncement::where('id', $post->id)->first();
         if($data['career']){
             return view('layouts.default.template.career_view', $data);
         }else{
@@ -405,7 +406,7 @@ class VmslController extends Controller{
 
     public function portfolioDetails($id){
 
-        $post = DB::TABLE('our_protfolios')->where('id', $id)->first();
+        $post = DB::TABLE('our_protfolios')->where('title', str_replace('-', ' ', $id))->first();
         $data['single'] = $post;
         $data['title'] = $post->title;
         $data['breadcum'] = DB::table('con_banner_slider')->where('type', 'portfolio')->where('status', 1)->get();
@@ -440,7 +441,7 @@ class VmslController extends Controller{
     }
 	
 	public function industryDetails($id){
-		$industry = DB::table('industries')->where('id',$id)->where('status', 1)->first();
+		$industry = DB::table('industries')->where('title',str_replace('-', ' ', $id))->where('status', 1)->first();
         $data['title'] = $industry->title;
 		$data['industry'] = $industry;
         $data['breadcum'] = DB::table('con_banner_slider')->where('type', 'industries')->where('status', 1)->first();
@@ -476,7 +477,7 @@ class VmslController extends Controller{
 	}
 	
 	public function productsSingle($id){
-		$post = DB::TABLE('products_solution')->where('id', $id)->first();
+		$post = DB::TABLE('products_solution')->where('title', str_replace('-', ' ', $id))->first();
 		$data['title'] = $post->title;
 		$data['service'] = $post;
         $data['breadcum'] = DB::table('con_banner_slider')->where('type', 'why_us')->where('status', 1)->first();

@@ -196,7 +196,7 @@
 	color: #FFFFFF;
 	font-size: 60px;
 	font-weight: 500;
-	font-family: "Tungsten A", "Tungsten B", "Khand", sans-serif;
+	font-family: 'Montserrat' !important;
 	line-height: 60px;
 }
 .h1-heading {
@@ -204,7 +204,7 @@
 	line-height: 80px;
 	/*letter-spacing: -1.5px;*/
 	font-weight: 500;
-	font-family: "Tungsten A", "Tungsten B", "Khand", sans-serif;
+	font-family: 'Montserrat' !important;
 }
 .h1-sz30 {
 	font-size: 30px;
@@ -4430,7 +4430,7 @@ text.pentagone-st4 {
 }
 
 .pentagone-st3, .pentagone-st5 {
-	font-family: 'myriad-pro';
+	font-family: 'Montserrat' !important;
 	cursor: pointer
 }
 
@@ -7012,7 +7012,7 @@ bg-topaz-medium {
 
 .main-text-body-investors h1 {
     font-size: 80px;
-    font-family: "Tungsten A", "Tungsten B", "Khand", sans-serif;
+    font-family: 'Montserrat' !important;
     font-weight: 500;
     line-height: 80px;
     margin: 15px 0;
@@ -7922,7 +7922,7 @@ margin-bottom: 50px;
     font-size: 4rem;
     line-height: 4rem;
     font-weight: 500;
-    font-family: "Tungsten A", "Tungsten B", "Khand", sans-serif;
+    font-family: 'Montserrat' !important;
     margin: 0 0 1rem;
 }
 
@@ -8005,7 +8005,7 @@ margin-bottom: 50px;
 /*-------------------------------- Subsidairies------------------------------ */
 
 #main-text-body .sub-font {
- font-family: myriad-pro, Arial;
+ font-family: 'Montserrat' !important;
 }
 
 /*#main-text-body {
@@ -8033,18 +8033,18 @@ margin-bottom: 50px;
 
 #main-text-body .accordion-custom .panel-title a {    
     padding-left: 0px;
-	font-family: myriad-pro, Arial;
+	font-family: 'Montserrat' !important;
     line-height: 44px;
 }
 
 #main-text-body .accordion-custom .panel-body {    
-	font-family: myriad-pro, Arial;
+	font-family: 'Montserrat' !important;
     line-height: 37px;
     font-weight: 300;
 }
 
 .sub-font {
-   font-family: myriad-pro, Arial;
+   font-family: 'Montserrat' !important;
 }
 
 /*---------------------------Java Scritp for Roration icon zoomOut and zoomIn-----------------------------------*/
@@ -9160,9 +9160,13 @@ footer {
 }
 ul.footer-txt > li:first-child {
 	margin-top: 20px;
+	font-size: 16px;
 }
 ul.footer-txt > li {
 	margin-bottom: 10px;
+}
+ul.footer-txt > li:hover a{
+	color: #888888;
 }
 ul.footer-txt > li > a {
 	color: #ffffff;
@@ -9253,7 +9257,7 @@ ul.footer-txt > li > a {
 --------------------------------------------------------------*/
 @media screen and (max-width: 767px) {
 footer {
-	background: #F8F8F8;
+	background: #1d1e1c;
 	color: #333;
 	/*padding: 50px 0;*/
 	border-top: 5px solid #d8d8d8;
@@ -9268,11 +9272,11 @@ ul.footer-txt > li {
 	margin-bottom: 10px;
 }
 ul.footer-txt > li > a {
-	color: #3F3F3F;
+	color: #ffffff;
 	font-size: 16px;
 }
 .ftr-head {
-	color: #000000;
+	color: #ffffff;
 	font-size: 22px;
 	font-weight: 900;
     margin: 0;
@@ -11025,10 +11029,13 @@ b, strong {
     background: #fff;
     box-shadow: 0 0 40px rgb(51 51 51 / 10%);
 }
-.service_col:hover{
-	transform: translateY(-5px);
-    background: #fff;
-    box-shadow: 0 0 40px rgb(51 51 51 / 10%);
+.service_col_border:hover {
+	transform: translateY(-15px);
+    background: #181818;
+    /*box-shadow: 0 0 40px rgb(51 51 51 / 10%);*/
+}
+.service_col_border:hover p{
+	color: #fffdfd !important;
 }
 .m-t-0{
 	margin-top: 0px !important;
@@ -11049,6 +11056,10 @@ b, strong {
 }
 .dropdown-item{
 	color: black !important;
+}
+.dropdown-item:hover{
+	color: black !important;
+	font-weight: 600;
 }
 
 .l3-gradient{

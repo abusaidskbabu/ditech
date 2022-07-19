@@ -49,7 +49,7 @@
 }
 .apply_button:hover{
     color:#fff;
-    padding: 10px 15px 10px 15px;
+    padding: 10px 4px 10px 4px;
 }
 .mychev{
     margin-left:10px;
@@ -113,7 +113,7 @@
             <div class="row">
                 <div class="col-md-9 col-sm-12 col-xs-12 ">
                     <h1 class="h2-heading white-color l-top">
-                        {{ $title }}
+                        {{-- {{ $title }} --}}
                     </h1>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="mytext">
-                        <a class="apply_button button" href="{{ route('circular', $c->id) }}"><span>apply now  <i class="fa fa-angle-double-right mychev" aria-hidden="true"></i></span></a>
+                        <a class="apply_button button" href="{{ route('circular', str_replace(' ', '-', $c->title)) }}"><span>apply now  <i class="fa fa-angle-double-right mychev" aria-hidden="true"></i></span></a>
                     </div>
                 </div>
             </div>
