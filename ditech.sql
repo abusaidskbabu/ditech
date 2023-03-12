@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2022 at 07:49 PM
+-- Generation Time: Mar 12, 2023 at 11:07 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -3553,7 +3553,7 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id`, `group_id`, `username`, `password`, `email`, `first_name`, `last_name`, `birth_of_day`, `address_1`, `address_2`, `state`, `city`, `phone`, `country`, `avatar`, `active`, `login_attempt`, `last_login`, `created_at`, `updated_at`, `reminder`, `activation`, `remember_token`, `last_activity`, `config`) VALUES
-(1, 1, 'superadmin', '$2y$10$ty.TpWnEjBOk1hoI3M0WIOnyVvrjcyLZ4/7LE9fnBOVRtc4cZekkW', 'concaveit@gmail.com', 'Root', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.png', 1, 12, '2021-07-04 03:27:59', '2014-03-12 10:18:46', '2020-05-06 11:52:40', 'SNLyM4Smv12Ck8jyopZJMfrypTbEDtVhGT5PMRzxs', NULL, 'aCERlxnHnHp1gLSO1ndW4Y8jN24d94k3YY7eqTLmrtIryZL6Sh4XsAqIFRY8', 1485431605, NULL),
+(1, 1, 'superadmin', '$2y$10$ty.TpWnEjBOk1hoI3M0WIOnyVvrjcyLZ4/7LE9fnBOVRtc4cZekkW', 'concaveit@gmail.com', 'Root', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.png', 1, 12, '2022-07-23 17:34:12', '2014-03-12 10:18:46', '2020-05-06 11:52:40', 'SNLyM4Smv12Ck8jyopZJMfrypTbEDtVhGT5PMRzxs', NULL, 'lAlWs6uTvWAoYDTfB5cGQBk5HR6G7NOSarkWZv4etXd9sSbCpaAyEndNe4IG', 1485431605, NULL),
 (14, 1, 'vmsl', '$2y$10$6/HaRfOQXl/7TxQjPKVaRuJmpjtfOSCqj.MFeoH0UhlZTLyKAvCNu', 'info@vmsl.com.bd', 'Vmsl', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '14.png', 1, 0, '2022-05-21 07:43:34', '2021-01-19 12:39:52', NULL, NULL, NULL, 'l6ncmYQaeCZsptYll0BPD5nHQfqKZiv5fF3ymxa93jRCDur9nuCUt0qZas58', NULL, NULL),
 (15, 2, 'razwan', '$2y$10$BMcLoxSD3kyGFRkUCq0ovea6ok7m5kZMB1OS.6Wqh5m.vBT6r2J8.', 'razwan.nabin@yahoo.com', 'razwan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15.png', 1, 0, '2021-07-01 16:57:28', '2021-07-01 16:52:31', NULL, NULL, NULL, 'ihkFOj3dmjOgCOf6S04EqQlp2LpT9kX1awrFmkE73Nk487tbISiPieEgCSNG', NULL, NULL),
 (16, 2, 'nizam', '$2y$10$NBsb5Iw9Xb3ZFrz1Dtfjp.NI3xOVkBn07rX73FsvMRSKPb73uDXka', 'nizam1016@gmail.com', 'nizam', 'nizam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '16.png', 1, 0, '2021-07-03 06:54:11', '2021-07-01 17:03:50', NULL, NULL, NULL, 'G4sWO8sVkzlR80qXq6ocsSWxGl39hHLZXWg8OKyoSjgClwMPQCnwjmGaf9fj', NULL, NULL),
